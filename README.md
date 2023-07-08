@@ -3,7 +3,8 @@
 
 ## Atividade:
 A atividade consiste na realização do CRUD da classe Professor abaixo usando JBDC e Java. <br>
-![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/601c1a23-b59f-460a-ab36-f471dd243b2f)
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/b55a06b2-6956-462b-88c5-e0caf45a8918)
+
 
 
 ## Tecnologias Utilizadas:

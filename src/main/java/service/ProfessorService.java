@@ -3,11 +3,12 @@ package service;
 import DAO.ConexaoDB;
 import DAO.DAOFactory;
 import DAO.ProfessorDAO;
+
 import java.util.List;
+
 import model.Professor;
 
 /**
- *
  * @author julio
  */
 public class ProfessorService {

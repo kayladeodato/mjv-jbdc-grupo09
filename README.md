@@ -48,16 +48,16 @@ Por padrão a informação de falso no Postgresql fica vazio
 
 ### Excluir
 Exclusão realizada do professor com id 32:
-
-![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/5f56239f-1207-497c-aa97-f355f09a9af5)
-![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/91544562-a957-42da-83bb-f13a322ed63d)
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/0dca86d2-c00d-481e-83bb-311ff0cfc1f6)<br>
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/5f56239f-1207-497c-aa97-f355f09a9af5)<br>
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/91544562-a957-42da-83bb-f13a322ed63d)<br>
 
 
 
 ### Busca por nome
-![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/c8edc81e-c83f-4ba2-bda4-33c04d07d887)
-![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/d6762709-f440-4009-a733-1adea70dc761)
-![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/7bb10071-74c4-47a8-876d-013941a0a50e)
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/c8edc81e-c83f-4ba2-bda4-33c04d07d887)<br>
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/d6762709-f440-4009-a733-1adea70dc761)<br>
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/7bb10071-74c4-47a8-876d-013941a0a50e)<br>
 
 
 ## Interface Gráfica

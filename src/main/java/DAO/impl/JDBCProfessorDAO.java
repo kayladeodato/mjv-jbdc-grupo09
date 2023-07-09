@@ -61,7 +61,7 @@ public class JDBCProfessorDAO implements ProfessorDAO {
 
             rowsUpdated();
             if (rowsUpdated > 0) {
-                System.out.println("Nome do professor alterado com sucesso.");
+                System.out.println("Dados do professor alterado com sucesso.");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -116,7 +116,7 @@ public class JDBCProfessorDAO implements ProfessorDAO {
         List<Professor> registros = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM tab_professor";
+            String sql = "SELECT * FROM tab_professor order by id";
             Statement statement = conexao.createStatement();
             resultSet = statement.executeQuery(sql);
 
@@ -144,7 +144,7 @@ public class JDBCProfessorDAO implements ProfessorDAO {
         List<Professor> registros = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM tab_professor WHERE UPPER(nome) LIKE  ? ";
+            String sql = "SELECT * FROM tab_professor WHERE UPPER(nome) LIKE  ? order by id";
             preparedStatement(sql);
             preparedStatement.setString(1, "%" + nome.toUpperCase() + "%");
             resultSet();

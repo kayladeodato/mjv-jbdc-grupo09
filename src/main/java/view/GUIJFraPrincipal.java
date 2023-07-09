@@ -109,7 +109,7 @@ public class GUIJFraPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jComBoxParametro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nome", "ID" }));
+        jComBoxParametro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Nome", "ID"}));
 
         jLabel1.setText("Buscar");
 
@@ -182,21 +182,23 @@ public class GUIJFraPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbutAdicionarActionPerformed
 
     private void jbutEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbutEditarActionPerformed
+        try {
+            int linha = jTabProfessor.getSelectedRow();
 
-        int linha = jTabProfessor.getSelectedRow();
+            if (linha != -1) {
 
-        if (linha != -1) {
+                Professor professor = service.findById(modelo.getProfessor(linha).getId());
 
-            Professor professor = service.findById(modelo.getProfessor(linha).getId());
+                GUIDadosProfessor entradaDados = new GUIDadosProfessor(this, rootPaneCheckingEnabled, professor);
 
-            GUIDadosProfessor entradaDados = new GUIDadosProfessor(this, rootPaneCheckingEnabled, professor);
+                entradaDados.setVisible(true);
 
-            entradaDados.setVisible(true);
-
-            modelo.updateTable(service.findAll());
-            jTabProfessor.updateUI();
+                modelo.updateTable(service.findAll());
+                jTabProfessor.updateUI();
+            }
+        } catch (IndexOutOfBoundsException outOfBoundsException) {
+            JOptionPane.showMessageDialog(this, "Verifique se selecionou a linha");
         }
-
 
     }//GEN-LAST:event_jbutEditarActionPerformed
 
@@ -222,20 +224,26 @@ public class GUIJFraPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTexFieBuscaKeyReleased
 
     private void jButExcluirActionPerformed(java.awt.event.ActionEvent evt) {
+        UIManager.put("OptionPane.yesButtonText", "Sim");
+        UIManager.put("OptionPane.noButtonText", "Não");
+
         try {
             int linha = jTabProfessor.getSelectedRow();
 
             if (linha != -1) {
-
-                service.excuir(modelo.getProfessor(linha).getId());
-                modelo.updateTable(service.findAll());
-                jTabProfessor.updateUI();
+                int excluir = JOptionPane.showConfirmDialog(this, "Deseja mesmo excluir o professor " + modelo.getProfessor(linha).getNome() + "?", "Confirmar Exlcusão?", JOptionPane.YES_NO_OPTION);
+                System.out.println("VALOR" + excluir);
+                if (excluir == 0) {
+                    service.excuir(modelo.getProfessor(linha).getId());
+                    modelo.updateTable(service.findAll());
+                    jTabProfessor.updateUI();
+                }
 
             } else {
                 JOptionPane.showMessageDialog(this, "Primeiro Selecione a Linha");
             }
-        }catch (IndexOutOfBoundsException outOfBoundsException){
-            JOptionPane.showMessageDialog(this, "Seleciono uma linha");
+        } catch (IndexOutOfBoundsException outOfBoundsException) {
+            JOptionPane.showMessageDialog(this, "Verifique se selecionou a linha");
         }
 
     }

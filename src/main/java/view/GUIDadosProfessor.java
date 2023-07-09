@@ -6,12 +6,16 @@ package view;
 
 import service.ProfessorService;
 
+import java.awt.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import model.Professor;
+
+import javax.swing.*;
 
 /**
  *
@@ -119,6 +123,7 @@ public class GUIDadosProfessor extends javax.swing.JDialog {
             try {
                 jForFieDataCadastro.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/#### ##:##")));
             } catch (java.text.ParseException ex) {
+                JOptionPane.showMessageDialog(this, "Você Inseriu uma data ou hora invalida");
                 ex.printStackTrace();
             }
             jForFieDataCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -286,7 +291,14 @@ public class GUIDadosProfessor extends javax.swing.JDialog {
         DateTimeFormatter formatterCadastro = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
         professor.setNome(jTexFieNome.getText());
-        professor.setDataNascimento(LocalDate.parse(jForFieDataNasc.getText(), formatter));
+        try {
+            professor.setDataNascimento(LocalDate.parse(jForFieDataNasc.getText(), formatter));
+        }catch (DateTimeParseException dateTimeParseException){
+            JOptionPane.showMessageDialog(this, "Você inseriu uma data ou hora de nascimento errada!");
+            jForFieDataNasc.requestFocus();
+            return;
+        }
+
         professor.setCargaHoraria(LocalTime.parse(jForFieCargaHoraria.getText()));
         professor.setValorHora(Double.valueOf(jTexFieValorHora.getText().replace(",", ".")));
         professor.setEstrangeiro(jRadButSim.isSelected());
@@ -296,7 +308,13 @@ public class GUIDadosProfessor extends javax.swing.JDialog {
             professor.setCadastro(LocalDateTime.now());
             jForFieDataCadastro.setText(LocalDateTime.now().format(formatterCadastro));
         }else{
-            professor.setCadastro(LocalDateTime.parse(jForFieDataCadastro.getText(),formatterCadastro));
+            try {
+                professor.setCadastro(LocalDateTime.parse(jForFieDataCadastro.getText(), formatterCadastro));
+            }catch (DateTimeParseException dateTimeParseException){
+                JOptionPane.showMessageDialog(this, "Você inseriu uma data ou hora de cadastro errada!");
+                jForFieDataCadastro.requestFocus();
+                return;
+            }
         }
         service.salvar(professor);
         this.dispose();

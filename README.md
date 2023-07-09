@@ -32,10 +32,35 @@ create table tab_professor(
 );
 ```
 
+### Inserir
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/b55ce80f-7b86-4df0-a5f4-dfc241f2957e)
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/5e23a2f1-f1b0-40f0-bee8-9745dddeabed)
 
-Dados gravados em banco através do sistema.
-![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/0f6a8468-eaa5-47f6-9c45-8040597cf9d2)
+### Alterar
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/63516927-9316-4b21-a1ab-b8f9dbd9b564)
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/85334fce-93fb-422d-882b-70d2e3d9900c)
 
+
+### Listar professores
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/033145b7-a79b-4b64-8b47-efde00c669ce)
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/4b4deab5-e072-4d86-b896-eeba99484fa9)
+Por padrão a informação de falso no Postgresql fica vazio
+
+### Excluir
+Exclusão realizada do professor com id 32:
+
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/5f56239f-1207-497c-aa97-f355f09a9af5)
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/91544562-a957-42da-83bb-f13a322ed63d)
+
+
+
+### Busca por nome
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/c8edc81e-c83f-4ba2-bda4-33c04d07d887)
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/d6762709-f440-4009-a733-1adea70dc761)
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/7bb10071-74c4-47a8-876d-013941a0a50e)
+
+
+## Interface Gráfica
 
 
 ## Equipe

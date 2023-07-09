@@ -24,6 +24,7 @@ public class ConexaoDB {
     }
 
     public static Connection getConnection() {
+
         return connection;
     }
 }

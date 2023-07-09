@@ -6,11 +6,13 @@ import model.Professor;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class JDBCProfessorDAO implements ProfessorDAO {
 
     private Connection conexao;
+    private PreparedStatement preparedStatement;
+    private ResultSet resultSet;
+    private int rowsUpdated;
 
     public JDBCProfessorDAO() {
         conexao = ConexaoDB.getConnection();
@@ -21,16 +23,17 @@ public class JDBCProfessorDAO implements ProfessorDAO {
         try {
             String sql = "INSERT INTO tab_professor (nome, dt_nascimento, carga_horaria ,vl_hora, fl_estrangeiro, hr_disponiveis, biografia, dh_cadastro) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-            PreparedStatement statement = conexao.prepareStatement(sql);
-            statement.setString(1, professor.getNome());
-            statement.setDate(2, Date.valueOf(professor.getDataNascimento()));
-            statement.setTime(3, Time.valueOf(professor.getCargaHoraria()));
-            statement.setDouble(4, professor.getValorHora());
-            statement.setBoolean(5, professor.isEstrangeiro());
-            statement.setInt(6, professor.getHorasDisponiveis());
-            statement.setString(7, professor.getBiografia());
-            statement.setTimestamp(8, Timestamp.valueOf(professor.getCadastro()));
-            int rowsUpdated = statement.executeUpdate();
+            preparedStatement(sql);
+            preparedStatement.setString(1, professor.getNome());
+            preparedStatement.setDate(2, Date.valueOf(professor.getDataNascimento()));
+            preparedStatement.setTime(3, Time.valueOf(professor.getCargaHoraria()));
+            preparedStatement.setDouble(4, professor.getValorHora());
+            preparedStatement.setBoolean(5, professor.isEstrangeiro());
+            preparedStatement.setInt(6, professor.getHorasDisponiveis());
+            preparedStatement.setString(7, professor.getBiografia());
+            preparedStatement.setTimestamp(8, Timestamp.valueOf(professor.getCadastro()));
+
+            rowsUpdated();
             if (rowsUpdated > 0) {
                 System.out.println("Professor adicionado com sucesso.");
             }
@@ -45,18 +48,18 @@ public class JDBCProfessorDAO implements ProfessorDAO {
         try {
             String sql = "UPDATE tab_professor SET nome = ?, dt_nascimento = ?, carga_horaria = ? ,vl_hora = ?, fl_estrangeiro = ?, hr_disponiveis = ?, biografia = ?, dh_cadastro = ? WHERE id = ?";
 
-            PreparedStatement statement = conexao.prepareStatement(sql);
-            statement.setString(1, professor.getNome());
-            statement.setDate(2, Date.valueOf(professor.getDataNascimento()));
-            statement.setTime(3, Time.valueOf(professor.getCargaHoraria()));
-            statement.setDouble(4, professor.getValorHora());
-            statement.setBoolean(5, professor.isEstrangeiro());
-            statement.setInt(6, professor.getHorasDisponiveis());
-            statement.setString(7, professor.getBiografia());
-            statement.setTimestamp(8, Timestamp.valueOf(professor.getCadastro()));
-            statement.setInt(9, professor.getId());
+            preparedStatement(sql);
+            preparedStatement.setString(1, professor.getNome());
+            preparedStatement.setDate(2, Date.valueOf(professor.getDataNascimento()));
+            preparedStatement.setTime(3, Time.valueOf(professor.getCargaHoraria()));
+            preparedStatement.setDouble(4, professor.getValorHora());
+            preparedStatement.setBoolean(5, professor.isEstrangeiro());
+            preparedStatement.setInt(6, professor.getHorasDisponiveis());
+            preparedStatement.setString(7, professor.getBiografia());
+            preparedStatement.setTimestamp(8, Timestamp.valueOf(professor.getCadastro()));
+            preparedStatement.setInt(9, professor.getId());
 
-            int rowsUpdated = statement.executeUpdate();
+            rowsUpdated();
             if (rowsUpdated > 0) {
                 System.out.println("Nome do professor alterado com sucesso.");
             }
@@ -70,9 +73,9 @@ public class JDBCProfessorDAO implements ProfessorDAO {
         int rowsDeleted = 0;
         try {
             String sql = "DELETE FROM tab_professor WHERE id = ?";
-            PreparedStatement statement = conexao.prepareStatement(sql);
-            statement.setInt(1, id);
-            rowsDeleted = statement.executeUpdate();
+            preparedStatement(sql);
+            preparedStatement.setInt(1, id);
+            rowsDeleted = preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -85,10 +88,10 @@ public class JDBCProfessorDAO implements ProfessorDAO {
         try {
             String sql = "SELECT * FROM tab_professor WHERE id = ?";
 
-            PreparedStatement statement = conexao.prepareStatement(sql);
-            statement.setInt(1, id);
+            preparedStatement(sql);
+            preparedStatement.setInt(1, id);
 
-            ResultSet resultSet = statement.executeQuery();
+            resultSet();
 
             while (resultSet.next()) {
                 professor = new Professor();
@@ -115,7 +118,7 @@ public class JDBCProfessorDAO implements ProfessorDAO {
         try {
             String sql = "SELECT * FROM tab_professor";
             Statement statement = conexao.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+            resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
                 Professor professor = new Professor();
@@ -142,9 +145,9 @@ public class JDBCProfessorDAO implements ProfessorDAO {
 
         try {
             String sql = "SELECT * FROM tab_professor WHERE UPPER(nome) LIKE  ? ";
-            PreparedStatement statement = conexao.prepareStatement(sql);
-            statement.setString(1, "%" + nome.toUpperCase() + "%");
-            ResultSet resultSet = statement.executeQuery();
+            preparedStatement(sql);
+            preparedStatement.setString(1, "%" + nome.toUpperCase() + "%");
+            resultSet();
 
             while (resultSet.next()) {
                 Professor professor = new Professor();
@@ -164,5 +167,39 @@ public class JDBCProfessorDAO implements ProfessorDAO {
         }
 
         return registros;
+    }
+
+    public void preparedStatement(String sql) {
+        try {
+            preparedStatement = conexao.prepareStatement(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void resultSet() {
+
+        try {
+            resultSet = preparedStatement.executeQuery();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void resultSet(String sql) {
+
+        try {
+            resultSet = preparedStatement.executeQuery(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void rowsUpdated() {
+        try {
+            rowsUpdated = preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

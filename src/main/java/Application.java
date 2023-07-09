@@ -1,10 +1,7 @@
 import DAO.ConexaoDB;
 import DAO.DAOFactory;
 import DAO.ProfessorDAO;
-import DAO.impl.JDBCProfessorDAO;
 import model.Professor;
-
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -29,21 +26,21 @@ public class Application {
 
     private static void incluirProfessor() {
         Professor professor = new Professor();
-        professor.setNome("Girafales");
+        professor.setNome("Pedro");
         professor.setDataNascimento(LocalDate.now());
         professor.setCargaHoraria(LocalTime.of(13,8,12));
         professor.setValorHora(20.0);
         professor.setEstrangeiro(true);
         professor.setHorasDisponiveis(50);
-        professor.setBiografia("Lorem Ipsum is simply dummy text of the printing and typesetting industry.");
+        professor.setBiografia("Professor das disciplinas de Ciências, Matemática e Português.");
         professor.setCadastro(LocalDateTime.of(2023, Month.JUNE,8,22,00,00));
         professorDAO.save(professor);
     }
 
     private static void alterarProfessor() {
-        Professor professor = professorDAO.findById(15);
+        Professor professor = professorDAO.findById(24);
         if (professor != null) {
-            professor.setNome("Junior");
+            professor.setNome("Antonio");
             professorDAO.update(professor);
         } else {
             System.out.println("Não existe o professor com o id informado.");
@@ -59,14 +56,14 @@ public class Application {
     }
 
     private static void excluirProfessor() {
-        int linhasDeletadas = professorDAO.delete(14);
+        int linhasDeletadas = professorDAO.delete(22);
         if (linhasDeletadas == 0) {
             System.out.println("Nenhum registro com id informado localizado para a exclusão");
         }
     }
 
     private static void listarProfessoresPorNome() {
-        List<Professor> professores = professorDAO.findByName("unI");
+        List<Professor> professores = professorDAO.findByName("ant");
         for (Professor p : professores) {
             System.out.println(p.getId() + " - " + p.getNome());
         }

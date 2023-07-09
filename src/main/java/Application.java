@@ -2,6 +2,8 @@ import DAO.ConexaoDB;
 import DAO.DAOFactory;
 import DAO.ProfessorDAO;
 import model.Professor;
+import view.GUIJFraPrincipal;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -14,14 +16,20 @@ public class Application {
 
     public static void main(String[] args) {
 
-        ConexaoDB.iniciarConexao();
+       /* ConexaoDB.iniciarConexao();
 
         professorDAO = DAOFactory.createProfessorDao();
         incluirProfessor();
         alterarProfessor();
         listarProfessores();
         excluirProfessor();
-        listarProfessoresPorNome();
+        listarProfessoresPorNome();*/
+
+        //GUI
+
+        GUIJFraPrincipal gui = new GUIJFraPrincipal();
+        gui.setVisible(true);
+
     }
 
     private static void incluirProfessor() {

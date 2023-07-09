@@ -56,7 +56,7 @@ public class Application {
     }
 
     private static void excluirProfessor() {
-        int linhasDeletadas = professorDAO.delete(22);
+        int linhasDeletadas = professorDAO.delete(25);
         if (linhasDeletadas == 0) {
             System.out.println("Nenhum registro com id informado localizado para a exclusão");
         }

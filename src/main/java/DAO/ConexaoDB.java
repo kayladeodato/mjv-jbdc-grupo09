@@ -1,7 +1,9 @@
 package DAO;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.Properties;
 
 public class ConexaoDB {
 
@@ -12,7 +14,15 @@ public class ConexaoDB {
         try {
 
             if (connection == null) {
-                connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/mjv_java_school", "postgres", "Service1703@");
+                Properties properties = new Properties();
+                InputStream inputStream = ConexaoDB.class.getClassLoader().getResourceAsStream("config.properties");
+                properties.load(inputStream);
+
+                String url = properties.getProperty("database.url");
+                String username = properties.getProperty("database.username");
+                String password = properties.getProperty("database.password");
+
+                connection = DriverManager.getConnection(url, username, password);
                 System.out.println("CONEXAO REALIZADA COM SUCESSO");
             }
         }

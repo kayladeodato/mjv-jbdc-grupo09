@@ -9,7 +9,7 @@ A atividade consiste na realização do CRUD da classe Professor abaixo usando J
 
 ## Tecnologias Utilizadas:
 - Java 17;
-- PostgresSQL;
+- Postgresql;
 - JBDC;
 
 ## Resultado:

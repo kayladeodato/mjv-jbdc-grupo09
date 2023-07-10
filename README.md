@@ -60,18 +60,23 @@ Exclusão realizada do professor com id 32:
 
 
 ## Interface Gráfica
-![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/dc7adc6b-0166-43b9-9a9e-a303f0b67597)
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/4e7ce00b-2b8f-484d-b853-f71790d4d58e)
+
 
 ### Adicionando um professor 
 ![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/cd14fc11-5e43-48de-bb6f-198162da0ee9)
 
 ### Editando um professor
-![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/bbdbb224-8671-44ed-b17f-b251585e03e2)
-![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/4be59e1e-f6b3-4688-8992-f54acbc68b78)
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/28f954df-660d-4449-8dcf-5ee693067764)
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/e8d9be08-fd07-402e-8f08-2231b71d9124)
+
+### Pesquisando um professor
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/ca0e9f8d-0c45-4671-b0d8-b3efbe3ab13f)
 
 ### Excluindo
-![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/62e7d6bf-5f0e-4fa2-af9d-c869852031dc)
-![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/37822739-52ca-45c2-a2ba-e501314e3094)
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/5e2a9415-8464-44fa-8120-d272e81d4109)
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/c04079e5-ba30-4cb0-8762-9a44673fbe89)
+
 
 
 ## Equipe

@@ -11,6 +11,7 @@ A atividade consiste na realização do CRUD da classe Professor abaixo usando J
 - Java 17;
 - Postgresql;
 - JBDC;
+- Java Swing;
 
 ## Resultado:
 Criação do banco e atributos:
@@ -69,6 +70,7 @@ Exclusão realizada do professor com id 32:
 ![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/4be59e1e-f6b3-4688-8992-f54acbc68b78)
 
 ### Excluindo
+![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/62e7d6bf-5f0e-4fa2-af9d-c869852031dc)
 ![image](https://github.com/kayladeodato/mjv-jbdc-grupo09/assets/13575694/37822739-52ca-45c2-a2ba-e501314e3094)
 
 
